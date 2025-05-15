@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZA Online Café</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-blue-600 text-white p-4 text-center text-2xl font-bold">
+    ZA Online Café
+  </header>
+
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">About Us</h2>
+    <p>We offer CV creation, student applications, printing, and digital services in Langa, Cape Town.</p>
+    <a href="https://wa.me/27210652027" class="inline-block mt-2 px-4 py-2 bg-green-500 text-white rounded">Chat on WhatsApp</a>
+  </section>
+
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Book a Computer</h2>
+    <form class="space-y-2" action="https://formspree.io/f/your-form-id" method="POST">
+      <input name="name" placeholder="Your Name" class="w-full p-2 border rounded" required>
+      <input name="phone" placeholder="Phone Number" class="w-full p-2 border rounded" required>
+      <select name="time" class="w-full p-2 border rounded">
+        <option>Choose a Time Slot</option>
+        <option>09:00 - 09:30</option>
+        <option>09:30 - 10:00</option>
+        <option>... (customize slots)</option>
+      </select>
+      <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Submit Booking</button>
+    </form>
+  </section>
+
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Send Your CV Info</h2>
+    <form class="space-y-2" action="https://formspree.io/f/your-form-id" method="POST">
+      <input name="full_name" placeholder="Full Name" class="w-full p-2 border rounded" required>
+      <input name="education" placeholder="Education" class="w-full p-2 border rounded">
+      <input name="experience" placeholder="Work Experience" class="w-full p-2 border rounded">
+      <textarea name="skills" placeholder="Skills" class="w-full p-2 border rounded"></textarea>
+      <input type="file" name="photo" class="w-full p-2">
+      <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded">Submit Info</button>
+    </form>
+  </section>
+
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Our Services</h2>
+    <ul class="list-disc ml-5">
+      <li>Internet & Printing (A4, A3, B/W, Colour)</li>
+      <li>CV Typing and Reprints</li>
+      <li>Copying, Laminating, Scanning, Binding</li>
+      <li>Stationery (Envelopes, Plastic Sleeves)</li>
+      <li>Software Installation & Email Setup</li>
+      <li>SARS & CIPC Services</li>
+      <li>PSIRA Registration and Renewals</li>
+      <li>Posters, Invites, Business Cards</li>
+    </ul>
+  </section>
+
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Pay Online</h2>
+    <a href="https://pay.yoco.com/your-store-link" class="inline-block px-4 py-2 bg-purple-600 text-white rounded">Pay with YOCO</a>
+  </section>
+
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Contact Us</h2>
+    <p>Phone: 021 065 2027</p>
+    <p>Email: zaonlinecafe@gmail.com</p>
+    <a href="https://wa.me/27210652027" class="text-blue-600 underline">WhatsApp Us</a>
+  </section>
+
+  <footer class="bg-gray-200 text-center p-4 mt-4">
+    &copy; 2025 ZA Online Café. All rights reserved.
+  </footer>
+</body>
+</html>
