@@ -1,143 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ZA Online Café</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
-    h1, h2 { color: #333; }
-    form { margin-bottom: 30px; }
-    label { display: block; margin-top: 10px; }
-    input, select, textarea, button {
-      width: 100%; max-width: 300px; padding: 8px; margin-top: 5px;
-      box-sizing: border-box;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ZA Online Café</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: #f0f8ff;
+    color: #333;
+  }
+  h1 {
+    text-align: center;
+    color: #004080; /* 深蓝 */
+    margin-bottom: 30px;
+  }
+  .section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  h2 {
+    color: #0066cc; /* 蓝色标题 */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #0066cc;
+    padding-bottom: 6px;
+  }
+  label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    color: #004080;
+  }
+  /* 南非语言文字，黄色，括号包起来 */
+  .local-lang {
+    color: #cc9900; /* 金黄色 */
+    font-weight: normal;
+    font-style: italic;
+    margin-left: 6px;
+  }
+  input, select, textarea, button {
+    width: 100%;
+    max-width: 320px;
+    padding: 8px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+  }
+  button {
+    background: #0099ff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 18px;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #007acc;
+  }
+  /* 付款区域更醒目 */
+  .payment-section {
+    background: #004080;
+    color: white;
+    text-align: center;
+  }
+  .payment-section a {
+    color: #ffeb3b;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  .payment-section a:hover {
+    text-decoration: underline;
+  }
+
+  /* 响应式布局 - 两栏 */
+  @media (min-width: 700px) {
+    .flex-row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
     }
-    button { cursor: pointer; margin-top: 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; }
-    button:hover { background-color: #0056b3; }
-    .section { margin-bottom: 40px; }
-    ul { padding-left: 20px; }
-  </style>
-  <script>
-    // 简单名字格式化函数：首字母大写，去除首尾空格
-    function formatName(id) {
-      let input = document.getElementById(id);
-      let val = input.value.trim().toLowerCase();
-      if(val.length > 0){
-        val = val.charAt(0).toUpperCase() + val.slice(1);
-      }
-      input.value = val;
+    .flex-child {
+      flex: 1;
+      min-width: 300px;
     }
-  </script>
+    form input, form select, form textarea {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // 名字格式化
+  function formatName(id) {
+    let input = document.getElementById(id);
+    let val = input.value.trim().toLowerCase();
+    if(val.length > 0){
+      val = val.charAt(0).toUpperCase() + val.slice(1);
+    }
+    input.value = val;
+  }
+</script>
 </head>
 <body>
   <h1>ZA Online Café</h1>
 
-  <!-- 联系 WhatsApp -->
-  <div class="section">
-    <h2>Contact Us (Xhumana Nathi)</h2>
-    <p>WhatsApp Contact: <a href="https://wa.me/你的号码" target="_blank">Click here to message (Chofoza lapha ukuthumela umlayezo)</a></p>
+  <div class="flex-row">
+    <div class="section flex-child">
+      <h2>Computer Booking <span class="local-lang">(Ukuhlela Ikhompyutha)</span></h2>
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <label for="name">Name <span class="local-lang">(Igama)</span>:</label>
+        <input type="text" id="name" name="name" required onblur="formatName('name')" placeholder="Enter your name / Faka igama lakho" />
+
+        <label for="phone">Contact Number <span class="local-lang">(Inombolo Yokuxhumana)</span>:</label>
+        <input type="tel" id="phone" name="phone" required placeholder="Enter phone number / Faka inombolo yakho" />
+
+        <label for="purpose">Booking Purpose <span class="local-lang">(Injongo Yokubhuka)</span>:</label>
+        <select id="purpose" name="purpose" required>
+          <option value="">Please select / Sicela ukhethe</option>
+          <option value="study">Study <span class="local-lang">(Funda)</span></option>
+          <option value="security">Security Job Application (PSIRA) <span class="local-lang">(Isicelo Somsebenzi Wokuphepha)</span></option>
+        </select>
+
+        <label for="start-time">Select Start Time <span class="local-lang">(Khetha Isikhathi Sokuqala)</span> (08:00 - 20:00):</label>
+        <input type="time" id="start-time" name="start-time" min="08:00" max="20:00" required />
+
+        <label for="duration">Select Duration <span class="local-lang">(Khetha Isikhathi)</span>:</label>
+        <select id="duration" name="duration" required>
+          <option value="30">30 minutes <span class="local-lang">(imizuzu engama-30)</span></option>
+          <option value="60">1 hour <span class="local-lang">(ihora eli-1)</span></option>
+          <option value="90">1.5 hours <span class="local-lang">(ihora eli-1.5)</span></option>
+          <option value="120">2 hours <span class="local-lang">(amahora ama-2)</span></option>
+        </select>
+
+        <button type="submit">Submit Booking <span class="local-lang">(Thumela Ukuhlela)</span></button>
+      </form>
+    </div>
+
+    <div class="section flex-child">
+      <h2>Submit CV Online <span class="local-lang">(Thumela i-CV Yakho Ku-inthanethi)</span></h2>
+      <form action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data">
+        <label for="cv-name">Name <span class="local-lang">(Igama)</span>:</label>
+        <input type="text" id="cv-name" name="cv-name" required onblur="formatName('cv-name')" placeholder="Enter your name / Faka igama lakho" />
+
+        <label for="cv-email">Email <span class="local-lang">(I-imeyili)</span>:</label>
+        <input type="email" id="cv-email" name="cv-email" required placeholder="Enter your email / Faka i-imeyili yakho" />
+
+        <label for="cv-purpose">Purpose <span class="local-lang">(Injongo)</span>:</label>
+        <select id="cv-purpose" name="cv-purpose" required>
+          <option value="">Please select / Sicela ukhethe</option>
+          <option value="study">Study <span class="local-lang">(Funda)</span></option>
+          <option value="security">Security Job Application (PSIRA) <span class="local-lang">(Isicelo Somsebenzi Wokuphepha)</span></option>
+        </select>
+
+        <label for="cv-file">Upload CV file (PDF or Word) <span class="local-lang">(Layisha ifayela le-CV)</span>:</label>
+        <input type="file" id="cv-file" name="cv-file" accept=".pdf,.doc,.docx" required />
+
+        <button type="submit">Submit CV <span class="local-lang">(Thumela i-CV)</span></button>
+      </form>
+    </div>
   </div>
 
-  <!-- 电脑预约 -->
-  <div class="section">
-    <h2>Computer Booking (Ukuhlela Ikhompyutha)</h2>
-    <form action="https://formspree.io/f/your-form-id" method="POST">
-      <label for="name">Name (Igama):</label>
-      <input type="text" id="name" name="name" required onblur="formatName('name')" placeholder="Enter your name / Faka igama lakho" />
-
-      <label for="phone">Contact Number (Inombolo Yokuxhumana):</label>
-      <input type="tel" id="phone" name="phone" required placeholder="Enter phone number / Faka inombolo yakho" />
-
-      <label for="purpose">Booking Purpose (Injongo Yokubhuka):</label>
-      <select id="purpose" name="purpose" required>
-        <option value="">Please select / Sicela ukhethe</option>
-        <option value="study">Study / Funda</option>
-        <option value="security">Security Job Application (PSIRA) / Isicelo Somsebenzi Wokuphepha (PSIRA)</option>
-      </select>
-
-      <label for="start-time">Select Start Time (Khetha Isikhathi Sokuqala) (08:00 - 20:00):</label>
-      <input type="time" id="start-time" name="start-time" min="08:00" max="20:00" required />
-
-      <label for="duration">Select Duration (Khetha Isikhathi):</label>
-      <select id="duration" name="duration" required>
-        <option value="30">30 minutes / imizuzu engama-30</option>
-        <option value="60">1 hour / ihora eli-1</option>
-        <option value="90">1.5 hours / ihora eli-1.5</option>
-        <option value="120">2 hours / amahora ama-2</option>
-      </select>
-
-      <button type="submit">Submit Booking (Thumela Ukuhlela)</button>
-    </form>
+  <div class="section payment-section">
+    <h2>Payment Options <span class="local-lang">(Izinketho Zokukhokha)</span></h2>
+    <p>Click below link to pay with YOCO: <br /><a href="https://pay.yoco.com/your-store-link" target="_blank">YOCO Online Payment (Inkokhelo ye-YOCO Ku-inthanethi)</a></p>
   </div>
 
-  <!-- 在线提交 CV -->
   <div class="section">
-    <h2>Submit CV Online (Thumela i-CV Yakho Ku-inthanethi)</h2>
-    <form action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data">
-      <label for="cv-name">Name (Igama):</label>
-      <input type="text" id="cv-name" name="cv-name" required onblur="formatName('cv-name')" placeholder="Enter your name / Faka igama lakho" />
-
-      <label for="cv-email">Email (I-imeyili):</label>
-      <input type="email" id="cv-email" name="cv-email" required placeholder="Enter your email / Faka i-imeyili yakho" />
-
-      <label for="cv-purpose">Purpose (Injongo):</label>
-      <select id="cv-purpose" name="cv-purpose" required>
-        <option value="">Please select / Sicela ukhethe</option>
-        <option value="study">Study / Funda</option>
-        <option value="security">Security Job Application (PSIRA) / Isicelo Somsebenzi Wokuphepha (PSIRA)</option>
-      </select>
-
-      <label for="cv-file">Upload CV file (PDF or Word) (Layisha ifayela le-CV):</label>
-      <input type="file" id="cv-file" name="cv-file" accept=".pdf,.doc,.docx" required />
-
-      <button type="submit">Submit CV (Thumela i-CV)</button>
-    </form>
-  </div>
-
-  <!-- PSIRA 服务介绍 -->
-  <div class="section">
-    <h2>Security Industry Services (Izinsizakalo Zezimboni Zokuphepha)</h2>
-    <p>We offer PSIRA registration, certificate renewal, card updates and support to help you enter South Africa’s security industry smoothly.</p>
-    <p>Sinikeza ukubhaliswa kwe-PSIRA, ukuvuselelwa kwezitifiketi, ukubuyekezwa kwamakhadi kanye nosizo ukuze usize ukungena embonini yezokuphepha yaseNingizimu Afrika kalula.</p>
+    <h2>Services <span class="local-lang">(Izinsizakalo)</span></h2>
     <ul>
-      <li>PSIRA Registration / Ukubhaliswa kwe-PSIRA</li>
-      <li>PSIRA Certificate Renewal / Ukuvuselelwa Kwetifiketi le-PSIRA</li>
-      <li>PSIRA Card Updates / Izibuyekezo Zamakhadi e-PSIRA</li>
-      <li>Document Preparation and Submission / Ukulungiswa Kwemibhalo Nokwethulwa</li>
-    </ul>
-    <p>For inquiries, contact us via WhatsApp or phone.</p>
-    <p>Ngemininingwane, sixhumane nathi nge-WhatsApp noma ucingo.</p>
-  </div>
-
-  <!-- 产品与服务列表（不显示价格） -->
-  <div class="section">
-    <h2>Services (Izinsizakalo)</h2>
-    <ul>
-      <li>Internet Usage (30 mins / 1 hour) / Ukusetshenziswa kwe-Intanethi (imizuzu engama-30 / ihora eli-1)</li>
-      <li>Black & White Printing and Copying / Ukuphrinta Nokukopisha Okumnyama Nokumhlophe</li>
-      <li>Colour Printing and Copying / Ukuphrinta Nokukopisha Okumbala</li>
-      <li>CV Typing and Editing / Ukubhala Nokuhlela i-CV</li>
-      <li>Scanning and Binding / Ukuhlola Nokubopha</li>
-      <li>Software Installation and Updates / Ukufakwa Kwesoftware Nezibuyekezo</li>
-      <li>PSIRA Registration and Renewal Services / Izinsizakalo Zokubhalisa Nezokuvuselela ze-PSIRA</li>
-      <li>SARS and CIPC Registrations / Ukubhaliswa kwe-SARS ne-CIPC</li>
-    </ul>
-  </div>
-
-  <!-- YOCO 支付链接 -->
-  <div class="section">
-    <h2>Payment Options (Izinketho Zokukhokha)</h2>
-    <p>Click below link to pay with YOCO:</p>
-    <p>Cofa isixhumanisi esingezansi ukukhokha nge-YOCO:</p>
-    <p><a href="https://pay.yoco.com/your-store-link" target="_blank">YOCO Online Payment (Inkokhelo ye-YOCO Ku-inthanethi)</a></p>
-  </div>
-
-  <!-- 联系信息 -->
-  <div class="section">
-    <h2>Contact Information (Imininingwane Yokuxhumana)</h2>
-    <p>Phone (Ucingo): 021 065 2027</p>
-    <p>Email (I-imeyili): <a href="mailto:zaonlinecafe@gmail.com">zaonlinecafe@gmail.com</a></p>
-  </div>
-</body>
-</html>
+      <li>Internet Usage (30 mins / 1 hour) <span class="local-lang">(Ukusetshenziswa kwe-Intanethi)</span></li>
+      <li>Black & White Printing and Copying <span class="local-lang">(Ukuphrinta Nokukopisha Okumnyama Nokumhlophe)</span></li>
+      <li>Colour Printing and Copying <span class="local-lang">(Ukuphrinta Nokukopisha Okumbala)</span></li>
+      <li>CV Typing and Editing <span class="local-lang">(Ukubhala Nokuhlela i-CV)</span></li>
+      <li
