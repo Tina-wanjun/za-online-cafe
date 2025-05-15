@@ -1,185 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ZA Online Café</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    background: #f0f8ff;
-    color: #333;
-  }
-  h1 {
-    text-align: center;
-    color: #004080; /* 深蓝 */
-    margin-bottom: 30px;
-  }
-  .section {
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-  h2 {
-    color: #0066cc; /* 蓝色标题 */
-    margin-bottom: 15px;
-    border-bottom: 2px solid #0066cc;
-    padding-bottom: 6px;
-  }
-  label {
-    display: block;
-    margin-top: 12px;
-    font-weight: bold;
-    color: #004080;
-  }
-  /* 南非语言文字，黄色，括号包起来 */
-  .local-lang {
-    color: #cc9900; /* 金黄色 */
-    font-weight: normal;
-    font-style: italic;
-    margin-left: 6px;
-  }
-  input, select, textarea, button {
-    width: 100%;
-    max-width: 320px;
-    padding: 8px;
-    margin-top: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 1em;
-  }
-  button {
-    background: #0099ff;
-    color: white;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 18px;
-    transition: background 0.3s ease;
-  }
-  button:hover {
-    background: #007acc;
-  }
-  /* 付款区域更醒目 */
-  .payment-section {
-    background: #004080;
-    color: white;
-    text-align: center;
-  }
-  .payment-section a {
-    color: #ffeb3b;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.2em;
-  }
-  .payment-section a:hover {
-    text-decoration: underline;
-  }
-
-  /* 响应式布局 - 两栏 */
-  @media (min-width: 700px) {
-    .flex-row {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZA Online Café</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <style>
+    details summary {
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      font-size: 1.25rem;
+      color: #004080; /* 深蓝 */
+      border-bottom: 2px solid #ccc;
+      list-style: none;
     }
-    .flex-child {
-      flex: 1;
-      min-width: 300px;
+    details[open] summary {
+      color: #f5c518; /* 黄色 */
+      border-bottom-color: #f5c518;
     }
-    form input, form select, form textarea {
-      max-width: 100%;
+    details ul {
+      margin-left: 1.25rem;
+      margin-bottom: 1rem;
+      list-style-type: disc;
+      color: #222;
     }
-  }
-</style>
-
-<script>
-  // 名字格式化
-  function formatName(id) {
-    let input = document.getElementById(id);
-    let val = input.value.trim().toLowerCase();
-    if(val.length > 0){
-      val = val.charAt(0).toUpperCase() + val.slice(1);
+    .local-lang {
+      font-style: italic;
+      color: #666;
+      margin-left: 0.5rem;
     }
-    input.value = val;
-  }
-</script>
+    .price {
+      color: #004080;
+      font-weight: 600;
+      float: right;
+    }
+    /* 支付按钮更醒目 */
+    .payment-btn {
+      background: linear-gradient(90deg, #2563eb, #fbbf24);
+      color: white;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+    .payment-btn:hover {
+      background: linear-gradient(90deg, #1e40af, #d97706);
+    }
+  </style>
 </head>
-<body>
-  <h1>ZA Online Café</h1>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-blue-600 text-white p-4 text-center text-2xl font-bold">
+    ZA Online Café
+  </header>
 
-  <div class="flex-row">
-    <div class="section flex-child">
-      <h2>Computer Booking <span class="local-lang">(Ukuhlela Ikhompyutha)</span></h2>
-      <form action="https://formspree.io/f/your-form-id" method="POST">
-        <label for="name">Name <span class="local-lang">(Igama)</span>:</label>
-        <input type="text" id="name" name="name" required onblur="formatName('name')" placeholder="Enter your name / Faka igama lakho" />
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">About Us</h2>
+    <p>We offer CV creation, student applications, printing, and digital services in Langa, Cape Town.</p>
+    <a href="https://wa.me/27210652027" class="inline-block mt-2 px-4 py-2 bg-green-500 text-white rounded">Chat on WhatsApp</a>
+  </section>
 
-        <label for="phone">Contact Number <span class="local-lang">(Inombolo Yokuxhumana)</span>:</label>
-        <input type="tel" id="phone" name="phone" required placeholder="Enter phone number / Faka inombolo yakho" />
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Book a Computer / Sebhuka Ikhompyutha</h2>
+    <form class="space-y-2" action="https://formspree.io/f/your-form-id" method="POST">
+      <input name="name" placeholder="Your Name / Igama Lakho" class="w-full p-2 border rounded" required />
+      <input name="phone" placeholder="Phone Number / Inombolo Yocingo" class="w-full p-2 border rounded" required />
+      <select name="time" class="w-full p-2 border rounded" required>
+        <option value="" disabled selected>Choose a Time Slot / Khetha Isikhathi</option>
+        <option>09:00 - 09:30</option>
+        <option>09:30 - 10:00</option>
+        <option>10:00 - 10:30</option>
+        <option>10:30 - 11:00</option>
+        <option>... (customize slots)</option>
+      </select>
+      <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Submit Booking / Thumela Isicelo</button>
+    </form>
+  </section>
 
-        <label for="purpose">Booking Purpose <span class="local-lang">(Injongo Yokubhuka)</span>:</label>
-        <select id="purpose" name="purpose" required>
-          <option value="">Please select / Sicela ukhethe</option>
-          <option value="study">Study <span class="local-lang">(Funda)</span></option>
-          <option value="security">Security Job Application (PSIRA) <span class="local-lang">(Isicelo Somsebenzi Wokuphepha)</span></option>
-        </select>
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Security Job Application / Isicelo Somsebenzi Wokuphepha</h2>
+    <form class="space-y-2" action="https://formspree.io/f/your-form-id" method="POST">
+      <input name="full_name" placeholder="Full Name / Igama Eligcwele" class="w-full p-2 border rounded" required />
+      <input name="id_number" placeholder="ID Number / Inombolo Ye-ID" class="w-full p-2 border rounded" required />
+      <input name="contact" placeholder="Contact Number / Inombolo Yokuxhumana" class="w-full p-2 border rounded" required />
+      <textarea name="experience" placeholder="Security Experience / Okuhlangenwe Nakho Kokuphepha" class="w-full p-2 border rounded"></textarea>
+      <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded font-semibold">Submit Application / Thumela Isicelo</button>
+    </form>
+  </section>
 
-        <label for="start-time">Select Start Time <span class="local-lang">(Khetha Isikhathi Sokuqala)</span> (08:00 - 20:00):</label>
-        <input type="time" id="start-time" name="start-time" min="08:00" max="20:00" required />
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-4">
+      Our Services / Izinsizakalo Zethu
+      <span class="local-lang">(Services in isiXhosa / isiZulu)</span>
+    </h2>
 
-        <label for="duration">Select Duration <span class="local-lang">(Khetha Isikhathi)</span>:</label>
-        <select id="duration" name="duration" required>
-          <option value="30">30 minutes <span class="local-lang">(imizuzu engama-30)</span></option>
-          <option value="60">1 hour <span class="local-lang">(ihora eli-1)</span></option>
-          <option value="90">1.5 hours <span class="local-lang">(ihora eli-1.5)</span></option>
-          <option value="120">2 hours <span class="local-lang">(amahora ama-2)</span></option>
-        </select>
+    <details open>
+      <summary>Internet & Printing Services <span class="local-lang">(Intanethi & Ukushicilela)</span></summary>
+      <ul>
+        <li>Internet - 30 Minutes <span class="price">R8</span></li>
+        <li>Internet - 1 Hour <span class="price">R12</span></li>
+        <li>A4 Print (B/W) per page <span class="price">R2</span></li>
+        <li>A4 Copy (B/W) per page <span class="price">R2</span></li>
+        <li>A4 Colour Copy per page <span class="price">R8</span></li>
+        <li>A4 Laminating per page <span class="price">R12</span></li>
+        <li>A3 Laminating per page <span class="price">R20</span></li>
+        <li>Plastic Sleeve <span class="price">R2</span></li>
+        <li>Binding from <span class="price">R35</span></li>
+      </ul>
+    </details>
 
-        <button type="submit">Submit Booking <span class="local-lang">(Thumela Ukuhlela)</span></button>
-      </form>
-    </div>
+    <details>
+      <summary>Everyday Services & Cards <span class="local-lang">(Izinsizakalo Zansuku zonke & Amakhadi)</span></summary>
+      <ul>
+        <li>Invites (Wedding, Flyers) B/W <span class="price">R300</span></li>
+        <li>Invites (Wedding, Flyers) Colour <span class="price">R400</span></li>
+        <li>Business Cards (50 Cards) <span class="price">R200</span></li>
+        <li>Digital Invite - Video Slide <span class="price">R350</span></li>
+        <li>Event Posters <span class="price">R300</span></li>
+      </ul>
+    </details>
 
-    <div class="section flex-child">
-      <h2>Submit CV Online <span class="local-lang">(Thumela i-CV Yakho Ku-inthanethi)</span></h2>
-      <form action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data">
-        <label for="cv-name">Name <span class="local-lang">(Igama)</span>:</label>
-        <input type="text" id="cv-name" name="cv-name" required onblur="formatName('cv-name')" placeholder="Enter your name / Faka igama lakho" />
+    <details>
+      <summary>Software Installation <span class="local-lang">(Ukufakwa KweSoftware)</span></summary>
+      <ul>
+        <li>Windows 7 <span class="price">R350</span></li>
+        <li>Windows 8 <span class="price">R450</span></li>
+        <li>Windows 10 <span class="price">R550</span></li>
+        <li>Windows 11 <span class="price">R650</span></li>
+        <li>Microsoft Installation <span class="price">R200</span></li>
+        <li>iCloud Account Registration <span class="price">R150</span></li>
+        <li>Email & Social Apps Install <span class="price">R30</span></li>
+      </ul>
+    </details>
 
-        <label for="cv-email">Email <span class="local-lang">(I-imeyili)</span>:</label>
-        <input type="email" id="cv-email" name="cv-email" required placeholder="Enter your email / Faka i-imeyili yakho" />
+    <details>
+      <summary>SARS & CIPC Services <span class="local-lang">(Isevisi ze-SARS & CIPC)</span></summary>
+      <ul>
+        <li>SARS Registration <span class="price">R80</span></li>
+        <li>SARS Tax Clearance <span class="price">R150</span></li>
+        <li>CIPC Company Registration <span class="price">R600</span></li>
+        <li>CIPC Annual Returns Submit <span class="price">R350</span></li>
+      </ul>
+    </details>
 
-        <label for="cv-purpose">Purpose <span class="local-lang">(Injongo)</span>:</label>
-        <select id="cv-purpose" name="cv-purpose" required>
-          <option value="">Please select / Sicela ukhethe</option>
-          <option value="study">Study <span class="local-lang">(Funda)</span></option>
-          <option value="security">Security Job Application (PSIRA) <span class="local-lang">(Isicelo Somsebenzi Wokuphepha)</span></option>
-        </select>
+    <details>
+      <summary>PSIRA Services (Security) <span class="local-lang">(Isevisi ze-PSIRA)</span></summary>
+      <ul>
+        <li>PSIRA Registration <span class="price">R370</span></li>
+        <li>PSIRA Certificate Renewal <span class="price">R164</span></li>
+        <li>PSIRA Card Renewal <span class="price">R200</span></li>
+      </ul>
+    </details>
+  </section>
 
-        <label for="cv-file">Upload CV file (PDF or Word) <span class="local-lang">(Layisha ifayela le-CV)</span>:</label>
-        <input type="file" id="cv-file" name="cv-file" accept=".pdf,.doc,.docx" required />
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Pay Online / Khokha Online</h2>
+    <a href="https://pay.yoco.com/your-store-link" class="payment-btn">Pay with YOCO / Khokha ngeYOCO</a>
+  </section>
 
-        <button type="submit">Submit CV <span class="local-lang">(Thumela i-CV)</span></button>
-      </form>
-    </div>
-  </div>
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">Contact Us / Xhumana Nathi</h2>
+    <p>Phone: 021 065 2027</p>
+    <p>Email: zaonlinecafe@gmail.com</p>
+    <a href="https://wa.me/27210652027" class="text-blue-600 underline">WhatsApp Us</a>
+  </section>
 
-  <div class="section payment-section">
-    <h2>Payment Options <span class="local-lang">(Izinketho Zokukhokha)</span></h2>
-    <p>Click below link to pay with YOCO: <br /><a href="https://pay.yoco.com/your-store-link" target="_blank">YOCO Online Payment (Inkokhelo ye-YOCO Ku-inthanethi)</a></p>
-  </div>
-
-  <div class="section">
-    <h2>Services <span class="local-lang">(Izinsizakalo)</span></h2>
-    <ul>
-      <li>Internet Usage (30 mins / 1 hour) <span class="local-lang">(Ukusetshenziswa kwe-Intanethi)</span></li>
-      <li>Black & White Printing and Copying <span class="local-lang">(Ukuphrinta Nokukopisha Okumnyama Nokumhlophe)</span></li>
-      <li>Colour Printing and Copying <span class="local-lang">(Ukuphrinta Nokukopisha Okumbala)</span></li>
-      <li>CV Typing and Editing <span class="local-lang">(Ukubhala Nokuhlela i-CV)</span></li>
-      <li
+  <footer class="bg-gray-200 text-center p-4 mt-4">
+    &copy; 2025 ZA Online Café. All rights reserved.
+  </footer>
+</body>
+</html>
