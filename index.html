@@ -2,103 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZA Online Café</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    function toggleSection(id) {
+      const section = document.getElementById(id);
+      section.classList.toggle('hidden');
+    }
+  </script>
 </head>
-<body class="bg-white text-gray-800">
-  <header class="bg-blue-700 text-white p-4 text-center text-3xl font-bold shadow-lg">
+<body class="bg-white text-gray-900">
+  <header class="bg-blue-600 text-white p-4 text-center text-2xl font-bold">
     ZA Online Café
   </header>
 
-  <!-- Hero Section -->
-  <section class="p-4 text-center bg-yellow-100">
-    <p class="text-lg">📍 Langa, Cape Town — We help with CVs, student tasks, and security applications.</p>
-    <a href="https://wa.me/27210652027" class="mt-3 inline-block px-5 py-2 bg-green-500 text-white font-semibold rounded shadow">
-      💬 WhatsApp Us
-    </a>
-  </section>
-
-  <!-- Book a Computer -->
   <section class="p-4">
-    <h2 class="text-2xl font-bold mb-2 text-blue-700">🖥️ Book a Computer (Bhukisha iKhompyutha)</h2>
-    <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-3">
-      <input name="name" placeholder="Full Name (Igama elipheleleyo)" class="w-full p-2 border rounded" required>
-      <input name="phone" placeholder="Phone Number (Inombolo yefowuni)" class="w-full p-2 border rounded" required>
-      <select name="purpose" class="w-full p-2 border rounded" required>
-        <option value="">How will you use the computer? (Ungayisebenzisa njani iKhompyutha?)</option>
-        <option>CV Typing</option>
-        <option>Security Application</option>
-        <option>Student Work</option>
-        <option>Other</option>
-      </select>
-      <input name="preferred_time" placeholder="Preferred Time (e.g., 10:00 - 11:00)" class="w-full p-2 border rounded">
-      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Submit Booking</button>
-    </form>
+    <h2 class="text-xl font-semibold mb-2">About Us</h2>
+    <p>We offer CV creation, student applications, printing, and digital services in Langa, Cape Town.</p>
+    <a href="https://wa.me/27210652027" class="inline-block mt-2 px-4 py-2 bg-green-500 text-white rounded">Chat on WhatsApp</a>
   </section>
 
-  <!-- CV Application Form -->
-  <section class="p-4 bg-gray-50">
-    <h2 class="text-2xl font-bold mb-2 text-yellow-600">📄 CV Application (Isicelo se-CV)</h2>
-    <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-3">
-      <input name="full_name" placeholder="Full Name (Igama elipheleleyo)" class="w-full p-2 border rounded" required>
-      <input name="dob" placeholder="Date of Birth (Umhla wokuzalwa)" class="w-full p-2 border rounded">
-      <input name="phone" placeholder="Phone Number (Inombolo yefowuni)" class="w-full p-2 border rounded">
-      <input name="email" placeholder="Email Address (Idilesi ye-imeyile)" class="w-full p-2 border rounded">
-      <input name="education" placeholder="Education Level (Inqanaba lemfundo)" class="w-full p-2 border rounded">
-      <textarea name="experience" placeholder="Work Experience (Amava omsebenzi)" class="w-full p-2 border rounded"></textarea>
-      <textarea name="skills" placeholder="Skills (Izakhono)" class="w-full p-2 border rounded"></textarea>
-      <input type="file" name="photo" class="w-full p-2">
-      <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded">Submit CV Info</button>
-    </form>
-  </section>
-
-  <!-- Security Application Form -->
   <section class="p-4">
-    <h2 class="text-2xl font-bold mb-2 text-red-600">🛡️ Security Application (Isicelo seNkonzo yokhuseleko)</h2>
-    <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-3">
-      <input name="full_name" placeholder="Full Name (Igama elipheleleyo)" class="w-full p-2 border rounded" required>
-      <input name="id_number" placeholder="ID Number (Inombolo yesazisi)" class="w-full p-2 border rounded">
-      <input name="phone" placeholder="Phone Number (Inombolo yefowuni)" class="w-full p-2 border rounded">
-      <input name="psira_number" placeholder="PSIRA Number (if any)" class="w-full p-2 border rounded">
-      <input type="file" name="documents" class="w-full p-2">
-      <textarea name="notes" placeholder="Any other info or request" class="w-full p-2 border rounded"></textarea>
-      <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Submit Security Info</button>
-    </form>
+    <h2 class="text-xl font-semibold mb-2 cursor-pointer text-blue-700" onclick="toggleSection('computerBooking')">📅 Book a Computer</h2>
+    <div id="computerBooking" class="hidden">
+      <form class="space-y-2 mt-2" action="https://formspree.io/f/your-form-id" method="POST">
+        <input name="name" placeholder="Your Name" class="w-full p-2 border rounded" required>
+        <input name="phone" placeholder="Phone Number" class="w-full p-2 border rounded" required>
+        <select name="usage" class="w-full p-2 border rounded">
+          <option>Reason for Booking</option>
+          <option>Apply for Security Job</option>
+          <option>Study / School Work</option>
+        </select>
+        <input name="preferred_time" placeholder="Preferred Time (e.g. 10:00 - 11:00)" class="w-full p-2 border rounded" required>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Submit Booking</button>
+      </form>
+    </div>
   </section>
 
-  <!-- Services List -->
-  <section class="p-4 bg-gray-100">
-    <h2 class="text-2xl font-bold mb-2 text-blue-700">🛠️ Our Services</h2>
-    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 list-disc list-inside text-sm">
-      <li>Internet (R8 - R12)</li>
-      <li>Printing A4/A3 B/W or Colour</li>
-      <li>CV Typing (R35), Editing, Reprint</li>
-      <li>Scanning, Binding, Laminating</li>
-      <li>Business Cards, Posters, Invites</li>
-      <li>PSIRA Services: Registration, Renewal</li>
-      <li>SARS Tax, Company Registration</li>
-      <li>Software Install (Windows, Microsoft, etc.)</li>
-    </ul>
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2 cursor-pointer text-yellow-600" onclick="toggleSection('cvBuilder')">📝 CV Builder</h2>
+    <div id="cvBuilder" class="hidden">
+      <form class="space-y-2 mt-2" action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data">
+        <input name="full_name" placeholder="Full Name" class="w-full p-2 border rounded" required>
+        <input name="education" placeholder="Education" class="w-full p-2 border rounded">
+        <input name="experience" placeholder="Work Experience" class="w-full p-2 border rounded">
+        <textarea name="skills" placeholder="Skills" class="w-full p-2 border rounded"></textarea>
+        <input type="file" name="photo" class="w-full p-2">
+        <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded">Submit CV Info</button>
+      </form>
+    </div>
   </section>
 
-  <!-- Payment -->
-  <section class="p-4 text-center">
-    <h2 class="text-xl font-semibold mb-2 text-purple-700">💳 Pay Online</h2>
-    <a href="https://pay.yoco.com/your-store-link" class="inline-block px-5 py-2 bg-purple-600 text-white rounded shadow">
-      Pay via YOCO
-    </a>
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">💼 Our Services</h2>
+    <div>
+      <h3 class="font-bold text-blue-700 cursor-pointer" onclick="toggleSection('everyday')">Everyday Services</h3>
+      <ul id="everyday" class="hidden list-disc ml-5 mt-1">
+        <li>Internet - 30 Minutes (R8)</li>
+        <li>Internet - 1 Hour (R12)</li>
+        <li>Typing per page (R15)</li>
+        <li>CV Typing (2 Pages) (R35)</li>
+        <li>CV Amending/Reprint (R15)</li>
+        <li>Copy B/W A4 (R2), A3 (R5)</li>
+        <li>Copy Colour A4 (R8), A3 (R10)</li>
+        <li>Printing, Scanning, Binding, Laminating</li>
+        <li>Plastic Sleeve (R2), Envelopes</li>
+      </ul>
+
+      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('software')">Software Install & Email</h3>
+      <ul id="software" class="hidden list-disc ml-5 mt-1">
+        <li>Windows 7–11 (R350–R650)</li>
+        <li>Microsoft Installation (R200)</li>
+        <li>Email & Social Apps Setup (R30)</li>
+        <li>iCloud Account Registration (R150)</li>
+      </ul>
+
+      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('sars')">SARS & CIPC</h3>
+      <ul id="sars" class="hidden list-disc ml-5 mt-1">
+        <li>SARS Registration (R80)</li>
+        <li>SARS Tax Clearance (R150)</li>
+        <li>CIPC Company Registration (R600)</li>
+        <li>CIPC Annual Return Submit (R350)</li>
+      </ul>
+
+      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('psira')">PSIRA Services</h3>
+      <ul id="psira" class="hidden list-disc ml-5 mt-1">
+        <li>PSIRA Registration (R370)</li>
+        <li>Certificate Renewal (R164)</li>
+        <li>Card Renewal (R200)</li>
+      </ul>
+
+      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('design')">Design & Print</h3>
+      <ul id="design" class="hidden list-disc ml-5 mt-1">
+        <li>Wedding/Flyers B/W or Colour (R200–R400)</li>
+        <li>Business Cards (50pcs) (R200)</li>
+        <li>Event Posters (R300)</li>
+        <li>Digital Video Invites (R350)</li>
+      </ul>
+    </div>
   </section>
 
-  <!-- Contact -->
-  <section class="p-4 text-center">
-    <h2 class="text-xl font-semibold mb-2 text-gray-700">📞 Contact Us</h2>
-    <p>Phone: <a href="tel:0210652027" class="text-blue-600 font-medium">021 065 2027</a></p>
-    <p>Email: <a href="mailto:zaonlinecafe@gmail.com" class="text-blue-600">zaonlinecafe@gmail.com</a></p>
-    <p><a href="https://wa.me/27210652027" class="text-green-600 font-semibold underline">Chat via WhatsApp</a></p>
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">💳 Pay Online</h2>
+    <a href="https://pay.yoco.com/your-store-link" class="inline-block px-4 py-2 bg-purple-600 text-white rounded">Pay with YOCO</a>
   </section>
 
-  <footer class="bg-gray-200 text-center p-4 mt-4 text-sm">
+  <section class="p-4">
+    <h2 class="text-xl font-semibold mb-2">📞 Contact Us</h2>
+    <a href="https://wa.me/27210652027" class="text-blue-600 underline">WhatsApp Us</a>
+    <p>Phone: 021 065 2027</p>
+    <p>Email: zaonlinecafe@gmail.com</p>
+  </section>
+
+  <footer class="bg-gray-100 text-center p-4 mt-4">
     &copy; 2025 ZA Online Café. All rights reserved.
   </footer>
 </body>
