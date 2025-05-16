@@ -20,11 +20,12 @@
   <section class="p-4">
     <h2 class="text-xl font-semibold mb-2">About Us</h2>
     <p>We offer CV creation, student applications, printing, and digital services in Langa, Cape Town.</p>
+    <p class="italic text-gray-600 mt-1">Trusted by many local customers — "ZA Café helped me get my first job!"</p>
     <a href="https://wa.me/27210652027" class="inline-block mt-2 px-4 py-2 bg-green-500 text-white rounded">Chat on WhatsApp</a>
   </section>
 
   <section class="p-4">
-    <h2 class="text-xl font-semibold mb-2 cursor-pointer text-blue-700" onclick="toggleSection('computerBooking')">📅 Book a Computer</h2>
+    <h2 class="text-xl font-semibold mb-2 cursor-pointer text-blue-700" onclick="toggleSection('computerBooking')">📅 Book a Computer <span class="text-sm text-gray-500">(Click to expand)</span></h2>
     <div id="computerBooking" class="hidden">
       <form class="space-y-2 mt-2" action="https://formspree.io/f/your-form-id" method="POST">
         <input name="name" placeholder="Your Name" class="w-full p-2 border rounded" required>
@@ -41,7 +42,7 @@
   </section>
 
   <section class="p-4">
-    <h2 class="text-xl font-semibold mb-2 cursor-pointer text-yellow-600" onclick="toggleSection('cvBuilder')">📝 CV Builder</h2>
+    <h2 class="text-xl font-semibold mb-2 cursor-pointer text-yellow-600" onclick="toggleSection('cvBuilder')">📝 CV Builder <span class="text-sm text-gray-500">(Click to expand)</span></h2>
     <div id="cvBuilder" class="hidden">
       <form class="space-y-2 mt-2" action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data">
         <input name="full_name" placeholder="Full Name" class="w-full p-2 border rounded" required>
@@ -56,8 +57,9 @@
 
   <section class="p-4">
     <h2 class="text-xl font-semibold mb-2">💼 Our Services</h2>
+    <p class="italic text-gray-600 mb-2">Click on each category below to see full pricing.</p>
     <div>
-      <h3 class="font-bold text-blue-700 cursor-pointer" onclick="toggleSection('everyday')">Everyday Services</h3>
+      <h3 class="font-bold text-blue-700 cursor-pointer" onclick="toggleSection('everyday')">Everyday Services <span class="text-sm text-gray-500">(Click to expand)</span></h3>
       <ul id="everyday" class="hidden list-disc ml-5 mt-1">
         <li>Internet - 30 Minutes (R8)</li>
         <li>Internet - 1 Hour (R12)</li>
@@ -70,7 +72,7 @@
         <li>Plastic Sleeve (R2), Envelopes</li>
       </ul>
 
-      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('software')">Software Install & Email</h3>
+      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('software')">Software Install & Email <span class="text-sm text-gray-500">(Click to expand)</span></h3>
       <ul id="software" class="hidden list-disc ml-5 mt-1">
         <li>Windows 7–11 (R350–R650)</li>
         <li>Microsoft Installation (R200)</li>
@@ -78,7 +80,7 @@
         <li>iCloud Account Registration (R150)</li>
       </ul>
 
-      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('sars')">SARS & CIPC</h3>
+      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('sars')">SARS & CIPC <span class="text-sm text-gray-500">(Click to expand)</span></h3>
       <ul id="sars" class="hidden list-disc ml-5 mt-1">
         <li>SARS Registration (R80)</li>
         <li>SARS Tax Clearance (R150)</li>
@@ -86,14 +88,14 @@
         <li>CIPC Annual Return Submit (R350)</li>
       </ul>
 
-      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('psira')">PSIRA Services</h3>
+      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('psira')">PSIRA Services <span class="text-sm text-gray-500">(Click to expand)</span></h3>
       <ul id="psira" class="hidden list-disc ml-5 mt-1">
         <li>PSIRA Registration (R370)</li>
         <li>Certificate Renewal (R164)</li>
         <li>Card Renewal (R200)</li>
       </ul>
 
-      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('design')">Design & Print</h3>
+      <h3 class="font-bold text-blue-700 cursor-pointer mt-3" onclick="toggleSection('design')">Design & Print <span class="text-sm text-gray-500">(Click to expand)</span></h3>
       <ul id="design" class="hidden list-disc ml-5 mt-1">
         <li>Wedding/Flyers B/W or Colour (R200–R400)</li>
         <li>Business Cards (50pcs) (R200)</li>
