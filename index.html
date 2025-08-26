@@ -1,61 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ZA Online Cafe | Your Local Internet Cafe</title>
-<meta name="description" content="Your local digital hub for printing, internet access, scanning, ID photos, and tech support." />
-<link rel="icon" href="assets/img/favicon.png" />
-<link rel="preload" href="assets/img/hero.jpg" as="image" />
-<link rel="stylesheet" href="assets/styles.css" />
-</head>
-<body>
-<!-- Header / Nav -->
-<header class="site-header" id="top">
-<div class="container header-inner">
-<a href="#top" class="brand" aria-label="ZA Online Cafe home">
-<svg class="brand-mark" width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
-<circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.15"/>
-<path d="M7 16h10M7 12h10M7 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-</svg>
-<span class="brand-text">ZA Online Cafe</span>
-</a>
-<nav class="main-nav" aria-label="Primary">
-<button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">Menu</button>
-<ul id="nav-list" class="nav-list">
-<li><a href="#services">Services</a></li>
-<li><a href="#pricing">Pricing</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-</div>
 </header>
-
-<!-- Hero -->
-<section class="hero" role="banner">
-<div class="hero-bg" aria-hidden="true">
-<img src="assets/img/hero.jpg" alt="" loading="eager" />
-</div>
-<div class="container hero-inner">
-<h1>Your Local Internet Cafe</h1>
-<p class="lead">Fast computers, reliable printing, scanning & laminating, ID photos, and friendly tech support — all in one place.</p>
-<div class="hero-cta">
-<a class="btn btn-primary" href="#contact">Get in touch</a>
-<a class="btn btn-ghost" href="#services">See services</a>
+<div class="grid gallery-grid">
+<figure class="gallery-item"><img src="assets/img/gallery-1.jpg" alt="Workspace" loading="lazy"/></figure>
+<figure class="gallery-item"><img src="assets/img/gallery-2.jpg" alt="Printing" loading="lazy"/></figure>
+<figure class="gallery-item"><img src="assets/img/gallery-3.jpg" alt="Front desk" loading="lazy"/></figure>
 </div>
 </div>
 </section>
 
-<!-- Services -->
-<section id="services" class="section">
-<div class="container">
+<!-- Contact -->
+<section id="contact" class="section alt">
+<div class="container contact">
 <header class="section-head">
-<h2 class="section-title">Our Services</h2>
-<p class="section-sub">Everything you need from a modern neighborhood internet cafe.</p>
+<h2 class="section-title">Contact Us</h2>
+<p class="section-sub">Replace with your real phone, email, and address.</p>
 </header>
-<div class="grid services-grid">
-<!-- Item: Internet Access -->
-<article class="card service">
-<div class="icon" aria-hidden="true">
+<div class="grid contact-grid">
+<div class="card contact-card">
+<h3>Get in touch</h3>
+<ul class="contact-list">
+<li><strong>Phone:</strong> <a href="tel:+27000000000">+27 00 000 0000</a></li>
+<li><strong>Email:</strong> <a href="mailto:hello@zaonlinecafe.co.za">hello@zaonlinecafe.co.za</a></li>
+<li><strong>Address:</strong> Your Street, City, 0000</li>
+<li><strong>Hours:</strong> Mon–Sat 07:00‑19:00 • Sun 07:00‑17:00</li>
+</ul>
+<div class="social">
+<a href="#" aria-label="Facebook">Facebook</a>
+<a href="#" aria-label="Instagram">Instagram</a>
+</div>
+</div>
+<form class="card contact-form" action="mailto:hello@zaonlinecafe.co.za" method="post" enctype="text/plain">
+<label>
+<span>Name</span>
+<input type="text" name="name" required />
+</label>
+<label>
+<span>Email</span>
+<input type="email" name="email" required />
+</label>
+<label>
+<span>Message</span>
+<textarea name="message" rows="5" required></textarea>
+</label>
+<button type="submit" class="btn btn-primary">Send</button>
+<p class="form-note">
+  Submitting will open your email client (simple static form).  
+  For backend processing, you can connect with Formspree, Netlify Forms, or your own server.
+</p>
+</form>
+</div>
+
+<div class="map-embed card">
+
+<div class="map-placeholder">Map placeholder — embed your location here</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>© <span id="year"></span> ZA Online Cafe. All rights reserved.</p>
+<a href="#top" class="to-top" aria-label="Back to top">↑ Back to top</a>
+</div>
+</footer>
+
+<script src="assets/script.js" defer></script>
+</body>
 </html>
