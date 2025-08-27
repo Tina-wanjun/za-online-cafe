@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ZA Online Cafe</title>
-<meta name="description" content="Your local destination for all computing needs. Internet, printing, scanning, photos, software help, and more in Langa, Cape Town." />
+<meta name="description" content="Your local destination for all computing needs. Internet, printing, scanning, photos, software help, SARS/CIPC and more in Langa, Cape Town." />
 <meta name="theme-color" content="#5b61ff" />
 <style>
   :root{
     --ink:#0f172a; --muted:#475569; --muted-2:#64748b;
-    --card:#ffffff; --bg:#f6f7fb; --brand:#5b61ff; --brand-600:#4a51d9; --ok:#10b981;
-    --panel:#eef2ff; --panel-border:#c7d2fe; --chip:#f8fafc;
+    --card:#ffffff; --bg:#f6f7fb; --brand:#5b61ff; --brand-600:#4a51d9; --ok:#22c55e;
+    --panel:#eef2ff; --panel-border:#c7d2fe;
     --radius:16px; --radius-sm:12px; --shadow:0 10px 30px rgba(0,0,0,.06);
     --container:1120px;
   }
@@ -23,22 +23,15 @@
   .btn:focus{outline:3px solid rgba(91,97,255,.25);outline-offset:2px}
   .btn-primary{background:var(--brand);color:#fff}
   .btn-primary:hover{background:var(--brand-600)}
-  .btn-wa{background:#22c55e;color:#073b1a;border-color:#16a34a}
+  .btn-wa{background:var(--ok);color:#073b1a;border-color:#16a34a}
   .btn-wa:hover{background:#16a34a}
   .btn-ghost{background:#fff;border-color:#e5e7eb}
-  .chips{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
-  .chip{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px 16px;color:#111827}
   .section{padding:64px 0}
   .section-head{margin-bottom:18px}
-  .k-panel{background:var(--panel);border:1px solid var(--panel-border);border-radius:20px;padding:0}
-  .k-head{display:flex;align-items:center;gap:.6rem;padding:18px 20px;border-bottom:1px solid var(--panel-border);cursor:pointer}
-  .k-head h3{margin:0;font-size:1.1rem}
-  .k-body{padding:18px}
-  .k-cta{display:flex;justify-content:center;margin-top:18px}
   .muted{color:var(--muted)}
   .muted-2{color:var(--muted-2)}
-  .shadow{box-shadow:var(--shadow)}
   .grid{display:grid;gap:22px}
+
   /* header */
   .site-header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid #e5e7eb}
   .header-inner{height:64px;display:flex;align-items:center;justify-content:space-between}
@@ -49,41 +42,70 @@
   .nav-link:hover{color:#111}
   .nav-actions{display:flex;gap:10px}
   .nav-toggle{display:none;border:1px solid #e5e7eb;background:#fff;border-radius:10px;padding:8px 12px}
+
   /* hero */
   .hero{background:linear-gradient(180deg,#f9faff 0,#ffffff 60%);padding:56px 0}
   .hero h1{margin:0 0 8px;font-size:clamp(1.8rem,3.5vw,2.6rem)}
   .hero p{margin:0;color:#334155}
   .hero-cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+
+  /* accordion (collapsible service groups) */
+  .acc { border-radius:16px; background:var(--panel); border:1px solid var(--panel-border); padding:0; }
+  .acc + .acc { margin-top:18px; }
+  .acc summary {
+    list-style:none; cursor:pointer;
+    display:flex; align-items:center; gap:.6rem;
+    padding:18px 22px; font-weight:800; color:#1f2a5a;
+  }
+  .acc summary::-webkit-details-marker{display:none}
+  .acc summary .icon{ font-size:1.15rem; }
+  .acc summary .caret{ margin-left:auto; transition:transform .2s ease; opacity:.7; }
+  .acc[open] summary .caret{ transform:rotate(180deg); opacity:1; }
+  .acc .acc-body{ background:#f6f7fb; border-top:1px solid var(--panel-border); padding:18px; border-radius:0 0 16px 16px; }
+  .acc .chips{ display:grid; gap:14px; grid-template-columns:repeat(3,1fr); }
+  .acc .chip{ background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:14px 16px; color:#111827; }
+  .acc .k-cta{ display:flex; justify-content:center; margin-top:16px; }
+
   /* testimonials */
   .t-grid{grid-template-columns:repeat(3,1fr)}
   .t-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
   .stars{color:#f59e0b;font-size:14px;letter-spacing:2px}
+
   /* visit & hours */
   .info-grid{grid-template-columns:1fr 1fr}
   .info-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px}
+
   /* footer */
   .site-footer{background:#0b1220;color:#e2e8f0;padding:40px 0 26px;margin-top:24px}
   .f-grid{grid-template-columns:1.4fr 1fr}
   .social{display:flex;gap:12px;margin-top:10px}
   .copyright{border-top:1px solid rgba(226,232,240,.15);margin-top:22px;padding-top:16px;color:#94a3b8}
-  /* booking form */
-  .form{display:grid;gap:12px}
-  .form label{display:grid;gap:6px;font-weight:600}
-  .form input,.form select,.form textarea{border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;font:inherit}
-  .form input:focus,.form select:focus,.form textarea:focus{outline:3px solid rgba(91,97,255,.25)}
+
+  /* floating buttons */
+  .float-wa{
+    position:fixed; left:16px; bottom:16px; z-index:45;
+    width:52px; height:52px; border-radius:50%;
+    display:grid; place-items:center; background:var(--ok); color:#fff;
+    box-shadow:var(--shadow);
+  }
+  .float-book{
+    position:fixed; right:16px; bottom:16px; z-index:45;
+    background:#6b7280; color:#fff; border-radius:999px; padding:10px 16px; box-shadow:var(--shadow);
+  }
+
   /* responsive */
   @media (max-width:980px){
-    .chips{grid-template-columns:repeat(2,1fr)}
     .t-grid{grid-template-columns:1fr 1fr}
     .info-grid{grid-template-columns:1fr}
+    .acc .chips{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:760px){
     .nav-toggle{display:inline-flex}
     nav ul{position:absolute;right:16px;top:60px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:10px;display:none;flex-direction:column;min-width:220px;box-shadow:var(--shadow)}
     nav ul.show{display:flex}
-    .chips{grid-template-columns:1fr}
     .t-grid{grid-template-columns:1fr}
     .f-grid{grid-template-columns:1fr}
+    .acc .chips{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -130,16 +152,13 @@
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- Services (Accordion) -->
   <section id="services" class="section" aria-label="Services">
-    <div class="container grid">
-      <!-- Group component -->
-      <div class="k-panel shadow">
-        <button class="k-head" data-toggle="#grp1" aria-expanded="true">
-          <span>🕒</span><h3>Everyday Services</h3>
-          <span class="muted-2" style="margin-left:auto">toggle</span>
-        </button>
-        <div id="grp1" class="k-body">
+    <div class="container">
+
+      <details class="acc" open>
+        <summary><span class="icon">🕒</span> Everyday Services <span class="caret">▾</span></summary>
+        <div class="acc-body">
           <div class="chips">
             <div class="chip">Internet (30 Minutes)</div>
             <div class="chip">Internet (1 Hour)</div>
@@ -153,18 +172,14 @@
             <div class="chip">Plastic Sleeves</div>
           </div>
           <div class="k-cta">
-            <a class="btn btn-primary" target="_blank" rel="noopener"
-               href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20Everyday%20Services.">Contact for Pricing</a>
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20Everyday%20Services.">Contact for Pricing</a>
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="k-panel shadow">
-        <button class="k-head" data-toggle="#grp2" aria-expanded="true">
-          <span>💻</span><h3>Printing & Copying</h3>
-          <span class="muted-2" style="margin-left:auto">toggle</span>
-        </button>
-        <div id="grp2" class="k-body">
+      <details class="acc">
+        <summary><span class="icon">💻</span> Printing & Copying <span class="caret">▾</span></summary>
+        <div class="acc-body">
           <div class="chips">
             <div class="chip">A4 Black & White Print</div>
             <div class="chip">A4 Black & White Copy</div>
@@ -177,18 +192,14 @@
             <div class="chip">A3 Lamination</div>
           </div>
           <div class="k-cta">
-            <a class="btn btn-primary" target="_blank" rel="noopener"
-               href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20Printing%20%26%20Copying.">Contact for Pricing</a>
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20Printing%20%26%20Copying.">Contact for Pricing</a>
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="k-panel shadow">
-        <button class="k-head" data-toggle="#grp3" aria-expanded="true">
-          <span>✉️</span><h3>Invites & Cards</h3>
-          <span class="muted-2" style="margin-left:auto">toggle</span>
-        </button>
-        <div id="grp3" class="k-body">
+      <details class="acc">
+        <summary><span class="icon">✉️</span> Invites & Cards <span class="caret">▾</span></summary>
+        <div class="acc-body">
           <div class="chips">
             <div class="chip">Wedding Invitations (B/W)</div>
             <div class="chip">Wedding Invitations (Color)</div>
@@ -197,18 +208,14 @@
             <div class="chip">Event Poster Design</div>
           </div>
           <div class="k-cta">
-            <a class="btn btn-primary" target="_blank" rel="noopener"
-               href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20Invites%20%26%20Cards.">Contact for Pricing</a>
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20Invites%20%26%20Cards.">Contact for Pricing</a>
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="k-panel shadow">
-        <button class="k-head" data-toggle="#grp4" aria-expanded="true">
-          <span>🧩</span><h3>Software Installation</h3>
-          <span class="muted-2" style="margin-left:auto">toggle</span>
-        </button>
-        <div id="grp4" class="k-body">
+      <details class="acc">
+        <summary><span class="icon">🧩</span> Software Installation <span class="caret">▾</span></summary>
+        <div class="acc-body">
           <div class="chips">
             <div class="chip">Windows 7 Installation</div>
             <div class="chip">Windows 8 Installation</div>
@@ -219,19 +226,166 @@
             <div class="chip">Email & Social Media Setup</div>
           </div>
           <div class="k-cta">
-            <a class="btn btn-primary" target="_blank" rel="noopener"
-               href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20Software%20Installation.">Contact for Pricing</a>
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20Software%20Installation.">Contact for Pricing</a>
           </div>
         </div>
-      </div>
+      </details>
 
-      <div class="k-panel shadow">
-        <button class="k-head" data-toggle="#grp5" aria-expanded="true">
-          <span>✅</span><h3>SARS & CIPC Services</h3>
-          <span class="muted-2" style="margin-left:auto">toggle</span>
-        </button>
-        <div id="grp5" class="k-body">
+      <details class="acc">
+        <summary><span class="icon">✅</span> SARS & CIPC Services <span class="caret">▾</span></summary>
+        <div class="acc-body">
           <div class="chips">
             <div class="chip">SARS Registration</div>
             <div class="chip">Tax Clearance Certificate</div>
-            <d
+            <div class="chip">Company Registration</div>
+            <div class="chip">Annual Returns Filing</div>
+          </div>
+          <div class="k-cta">
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20SARS%20%26%20CIPC%20Services.">Contact for Pricing</a>
+          </div>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary><span class="icon">🛡️</span> PSIRA Services <span class="caret">▾</span></summary>
+        <div class="acc-body">
+          <div class="chips">
+            <div class="chip">PSIRA Registration</div>
+            <div class="chip">Certificate Renewal</div>
+            <div class="chip">Card Renewal</div>
+          </div>
+          <div class="k-cta">
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/27210652027?text=Hi%2C%20I%27d%20like%20pricing%20for%20PSIRA%20Services.">Contact for Pricing</a>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- CV Tool -->
+  <section id="cvtool" class="section">
+    <div class="container">
+      <h2>CV Tool</h2>
+      <p class="muted-2">Need a professional CV? Contact us on WhatsApp and we’ll help you create or update your CV quickly.</p>
+      <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/27210652027?text=Hi%20%2C%20I%20need%20help%20with%20my%20CV.">Message us on WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="booking" class="section" aria-label="Booking">
+    <div class="container">
+      <h2>Make a Booking</h2>
+      <p class="muted-2">Save time — send us your request and preferred time. We’ll confirm shortly.</p>
+      <form class="grid" style="grid-template-columns:1fr 1fr" action="mailto:zaonlinecafe@gmail.com" method="post" enctype="text/plain">
+        <label style="display:grid;gap:6px"><span>Name</span><input name="name" type="text" required></label>
+        <label style="display:grid;gap:6px"><span>Email</span><input name="email" type="email" required></label>
+        <label style="display:grid;gap:6px"><span>Phone</span><input name="phone" type="tel" placeholder="+27 ..." required></label>
+        <label style="display:grid;gap:6px">
+          <span>Service</span>
+          <select name="service" required>
+            <option value="">Select…</option>
+            <option>Everyday Services</option>
+            <option>Printing & Copying</option>
+            <option>Invites & Cards</option>
+            <option>Software Installation</option>
+            <option>SARS & CIPC Services</option>
+            <option>PSIRA Services</option>
+          </select>
+        </label>
+        <label style="display:grid;gap:6px"><span>Date</span><input name="date" type="date" required></label>
+        <label style="display:grid;gap:6px"><span>Preferred time</span><input name="time" type="time" required></label>
+        <label style="grid-column:1 / -1;display:grid;gap:6px"><span>Notes</span><textarea name="notes" rows="4" placeholder="Anything we should prepare?"></textarea></label>
+        <div style="grid-column:1 / -1;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-primary" type="submit">Send Booking Request</button>
+          <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/27210652027?text=Hi%2C%20I%20want%20to%20book%20a%20service.">Book via WhatsApp</a>
+        </div>
+        <p class="muted-2" style="grid-column:1 / -1;margin:6px 0 0">Tip: replace the <code>action</code> with a Formspree/Netlify endpoint if you want backend handling.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" aria-label="Testimonials">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:8px">What Our Customers Say</h2>
+      <p class="muted-2" style="text-align:center;margin-top:0">Don’t just take our word for it — hear from our satisfied customers.</p>
+      <div class="grid t-grid" style="margin-top:18px">
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"Best internet Cafe, friendly staff and they go extra mile ensuring our needs are met."</p>
+          <strong>Xolile Mpalo</strong><div class="muted-2">Local Guide • 2 years ago</div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"Great experience! As small as it looks it does huge impact in our lives… moderate prices and fast working internet."</p>
+          <strong>Aaron Mde</strong><div class="muted-2">Local Guide • 1 year ago</div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"Great service and fair pricings."</p>
+          <strong>Asibabale Ndlebe</strong><div class="muted-2">Local Guide • 3 months ago</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit & Hours -->
+  <section class="section" aria-label="Visit and Hours">
+    <div class="container grid info-grid">
+      <div class="info-card">
+        <h3>Visit Us</h3>
+        <p class="muted-2">ZA Online Cafe<br/>C/O Olga Noivata St and Albert Luthuli St<br/>Langa, Cape Town, 7455</p>
+        <p><a class="btn btn-ghost" target="_blank" rel="noopener" href="https://maps.google.com/?q=C%2FO%20Olga%20Noivata%20St%20and%20Albert%20Luthuli%20St%2C%20Langa%2C%20Cape%20Town%2C%207455">View on Google Maps</a></p>
+        <p><a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/27210652027?text=Hi%2C%20I%20have%20a%20question.">Contact us on WhatsApp</a></p>
+      </div>
+      <div class="info-card">
+        <h3>Business Hours</h3>
+        <p><strong>Monday – Friday</strong><br/><span class="muted">7:00 AM – 6:00 PM</span></p>
+        <p><strong>Saturday – Sunday</strong><br/><span class="muted">9:00 AM – 5:00 PM</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container grid f-grid">
+    <div>
+      <div class="brand"><span class="mark" aria-hidden="true"></span> ZA Online Cafe</div>
+      <p class="muted-2" style="margin-top:8px">Your local destination for all computing needs. Fast internet, printing services, and technical support in a comfortable environment.</p>
+      <div class="social">
+        <a class="btn btn-ghost" href="#top" aria-label="Facebook">f</a>
+        <a class="btn btn-ghost" href="#top" aria-label="Instagram">ig</a>
+        <a class="btn btn-ghost" href="mailto:zaonlinecafe@gmail.com" aria-label="Email">✉</a>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Contact Us</h3>
+      <p class="muted-2">C/O Olga Noivata St and Albert Luthuli St, Langa, Cape Town, 7455</p>
+      <p><strong>Phone:</strong> <a href="tel:+27210652027">+27 021 065 2027</a></p>
+      <p><strong>Hours:</strong> Mon–Fri 7am–6pm • Sat–Sun 9am–5pm</p>
+    </div>
+  </div>
+  <div class="container copyright">© <span id="year"></span> ZA Online Cafe. All rights reserved.</div>
+</footer>
+
+<!-- Floating buttons -->
+<a class="float-wa" title="Chat on WhatsApp" target="_blank" rel="noopener"
+   href="https://wa.me/27210652027?text=Hi%2C%20I%20have%20a%20question.">💬</a>
+<a class="float-book" href="#booking" title="Book Now">Book Now</a>
+
+<script>
+  // mobile nav
+  const toggle=document.querySelector('.nav-toggle');
+  const navList=document.getElementById('nav-list');
+  if(toggle&&navList){
+    toggle.addEventListener('click',()=>{
+      const open=navList.classList.toggle('show');
+      toggle.setAttribute('aria-expanded',String(open));
+    });
+  }
+  // year
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
